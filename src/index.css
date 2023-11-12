@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: theme(fontFamily[Itim]);
+    src: url("../public/Itim-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  :root, [data-theme="tomato"] {
+    --theme-color-50: theme(colors[tomato].50);
+    --theme-color-100: theme(colors[tomato].100);
+    --theme-color-200: theme(colors[tomato].200);
+    --theme-color-300: theme(colors[tomato].300);
+    --theme-color-400: theme(colors[tomato].400);
+    --theme-color-500: theme(colors[tomato].500);
+    --theme-color-600: theme(colors[tomato].600);
+    --theme-color-700: theme(colors[tomato].700);
+    --theme-color-800: theme(colors[tomato].800);
+    --theme-color-900: theme(colors[tomato].900);
+    --theme-color-950: theme(colors[tomato].950);
+  }
+
+  [data-theme="blue"] {
+    --theme-color-50: theme(colors[blue].50);
+    --theme-color-100: theme(colors[blue].100);
+    --theme-color-200: theme(colors[blue].200);
+    --theme-color-300: theme(colors[blue].300);
+    --theme-color-400: theme(colors[blue].400);
+    --theme-color-500: theme(colors[blue].500);
+    --theme-color-600: theme(colors[blue].600);
+    --theme-color-700: theme(colors[blue].700);
+    --theme-color-800: theme(colors[blue].800);
+    --theme-color-900: theme(colors[blue].900);
+    --theme-color-950: theme(colors[blue].950);
+  }
+
+  [data-theme="green"] {
+    --theme-color-50: theme(colors[green].50);
+    --theme-color-100: theme(colors[green].100);
+    --theme-color-200: theme(colors[green].200);
+    --theme-color-300: theme(colors[green].300);
+    --theme-color-400: theme(colors[green].400);
+    --theme-color-500: theme(colors[green].500);
+    --theme-color-600: theme(colors[green].600);
+    --theme-color-700: theme(colors[green].700);
+    --theme-color-800: theme(colors[green].800);
+    --theme-color-900: theme(colors[green].900);
+    --theme-color-950: theme(colors[green].950);
+  }
+
+  body {
+    font-family: theme(fontFamily[Itim]), theme(fontFamily[DEFAULT]);
+    background-color: var(--theme-color-950);
+    color: theme(colors[white]);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  [disabled],.disabled {
+    @apply opacity-40 pointer-events-none
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    appearance: none;
+    display: none;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply select-none flex items-center justify-center
+  }
+
+  .btn-primary {
+    background-color: theme(colors[white]);
+    color: var(--theme-color-950);
+    box-shadow:  0 theme(spacing[btn-y-shadow]) theme(colors[gray]);
+    border: 1px solid theme(colors[gray]);
+  }
+
+  .btn-secondary {
+    background-color: var(--theme-color-800);
+    color: theme(colors[white]);
+    box-shadow:  0 theme(spacing[btn-y-shadow]) var(--theme-color-500);
+    border: 1px solid var(--theme-color-500);
+  }
+
+  .item {
+    @apply bg-white bg-opacity-0
+  }
+
+  .item:not(.selected) {
+    @apply hover:bg-opacity-10 active:bg-opacity-[.15]
+  }
+
+  .item.selected {
+    @apply bg-opacity-20 pointer-events-none
+  }
+
+  .history-table {
+    @apply w-full
+  }
+
+  .history-table th {
+    @apply font-normal
+  }
+
+  .history-table td,
+  .history-table th {
+    @apply py-8 px-16 border border-theme-500 text-center
+  }
+
+  .history-table td > svg {
+    @apply mx-auto
+  }
+
+  .switch {
+    @apply relative leading-none inline-block
+  }
+
+  .switch > input {
+    @apply 
+      appearance-none absolute w-full h-full rounded-pill
+      z-10 opacity-0
+  }
+
+  .switch > .track {
+    @apply rounded-pill border border-theme-500 w-32 h-18
+  }
+
+  .switch > .thumb {
+    @apply w-14 h-14 rounded-circle left-2 top-2 absolute bg-theme-500
+  }
+
+  .switch > input:checked ~ .track {
+    @apply bg-theme-500
+  }
+
+  .switch > input:checked ~ .thumb {
+    @apply bg-white left-auto right-2
+  }
+
+  .switch > input:disabled ~ * {
+    @apply opacity-40 pointer-events-none
+  }
+
+  .switch > input:focus-visible ~ .track {
+    outline: 2px solid theme(colors[white]);
+    outline-offset: 2px;
+  }
+
+  .textfield {
+    @apply 
+      caret-white placeholder:text-muted
+      focus:outline-0
+  }
+
+  .task-checkbox {
+    @apply
+      appearance-none w-32 h-32 rounded
+      bg-center bg-no-repeat bg-center
+      border border-white cursor-pointer
+      border-opacity-75
+  }
+
+  .task-checkbox:checked {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  }
+}
